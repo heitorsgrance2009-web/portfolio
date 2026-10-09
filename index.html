@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heitor | Início</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- tema.js fica aqui no topo para lembrar o modo claro/escuro -->
+  <script src="tema.js"></script>
+</head>
+<body>
+
+  <!-- Barra de navegação (igual em todas as páginas) -->
+  <header>
+    <a href="index.html" class="logo">Heitor</a>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="ativo">Início</a></li>
+        <li><a href="sobre.html">Sobre mim</a></li>
+        <li><a href="habilidades.html">Habilidades</a></li>
+        <li><a href="projetos.html">Projetos</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+    <button id="botao-tema" type="button">☀️ Modo claro</button>
+  </header>
+
+  <main>
+
+    <!-- Apresentação: texto na esquerda, foto na direita -->
+    <section class="hero">
+      <div class="hero-texto">
+        <p class="saudacao">Olá, eu sou</p>
+        <h1>Heitor</h1>
+        <p class="idade">16 anos</p>
+
+        <p class="linha-destaque">Estudante do ensino médio técnico</p>
+
+        <p>
+          Sou estudante do ensino médio com formação técnica no Colégio
+          Cotemig Floresta. Tenho interesse por design, tecnologia e
+          programação, e estou sempre estudando desenvolvimento web e
+          manutenção de computadores para evoluir cada vez mais.
+        </p>
+        <p>
+          Este portfólio reúne quem eu sou, o que já aprendi e como entrar
+          em contato comigo. Fique à vontade para explorar!
+        </p>
+
+        <a href="sobre.html" class="botao">Conheça meu perfil</a>
+        <a href="habilidades.html" class="botao botao-contorno">Minhas habilidades</a>
+        <a href="contato.html" class="botao botao-contorno">Fale comigo</a>
+      </div>
+
+      <div class="hero-foto">
+        <img src="foto.jpg" alt="Foto do Heitor" class="foto">
+      </div>
+    </section>
+
+    <!-- Resumo em 3 cartões (aparecem ao rolar a página) -->
+    <h2 class="revelar">Em resumo</h2>
+    <div class="grade">
+      <div class="cartao revelar">
+        <h3>Formação</h3>
+        <p>Ensino médio com formação técnica no Colégio Cotemig Floresta.</p>
+      </div>
+      <div class="cartao revelar">
+        <h3>Interesses</h3>
+        <p>Design, tecnologia e programação, com estudo de desenvolvimento web e manutenção de computadores.</p>
+      </div>
+      <div class="cartao revelar">
+        <h3>Objetivo</h3>
+        <p>Evoluir profissionalmente, adquirir novas habilidades e construir projetos para colocar o aprendizado em prática.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Rodapé com contato (igual em todas as páginas) -->
+  <footer>
+    <p class="rodape-titulo">Contato</p>
+    <div class="rodape-links">
+      <a href="mailto:heitorsgrance2009@gmail.com">heitorsgrance2009@gmail.com</a>
+      <a href="https://wa.me/5531996411013" target="_blank">WhatsApp: (31) 99641-1013</a>
+      <a href="https://github.com/heitorsgrance2009-web" target="_blank">GitHub: heitorsgrance2009-web</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

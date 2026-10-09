@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heitor | Contato</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="tema.js"></script>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">Heitor</a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="sobre.html">Sobre mim</a></li>
+        <li><a href="habilidades.html">Habilidades</a></li>
+        <li><a href="projetos.html">Projetos</a></li>
+        <li><a href="contato.html" class="ativo">Contato</a></li>
+      </ul>
+    </nav>
+    <button id="botao-tema" type="button">☀️ Modo claro</button>
+  </header>
+
+  <main>
+    <div class="topo-pagina">
+      <h1>Contato</h1>
+      <p class="subtitulo">Quer falar comigo? Preencha o formulário ou use um dos contatos ao lado.</p>
+    </div>
+
+    <div class="contato-grade">
+
+      <!-- Formulário de contato (com máscaras feitas em JavaScript) -->
+      <form id="formulario" class="cartao revelar" novalidate>
+        <div class="campo">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" placeholder="Seu nome completo" maxlength="60">
+          <span class="erro" id="erro-nome"></span>
+        </div>
+
+        <div class="campo">
+          <label for="telefone">Telefone</label>
+          <input type="text" id="telefone" placeholder="(31) 99999-9999" maxlength="15">
+          <span class="erro" id="erro-telefone"></span>
+        </div>
+
+        <div class="campo">
+          <label for="email">E-mail</label>
+          <input type="text" id="email" placeholder="seuemail@exemplo.com" maxlength="80">
+          <span class="erro" id="erro-email"></span>
+        </div>
+
+        <div class="campo">
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" placeholder="Escreva sua mensagem aqui..." maxlength="500"></textarea>
+          <span class="erro" id="erro-mensagem"></span>
+          <p class="contador" id="contador">0/500</p>
+        </div>
+
+        <button type="submit" class="botao">Enviar mensagem</button>
+      </form>
+
+      <!-- Informações de contato -->
+      <div class="cartao revelar">
+        <h2>Outras formas</h2>
+
+        <div class="item-contato">
+          <h3>E-mail</h3>
+          <!-- mailto: abre o programa de e-mail do visitante -->
+          <a href="mailto:heitorsgrance2009@gmail.com">heitorsgrance2009@gmail.com</a>
+        </div>
+
+        <div class="item-contato">
+          <h3>WhatsApp</h3>
+          <!-- wa.me abre uma conversa no WhatsApp (55 = Brasil, 31 = DDD) -->
+          <a href="https://wa.me/5531996411013" target="_blank">(31) 99641-1013</a>
+        </div>
+
+        <div class="item-contato">
+          <h3>GitHub</h3>
+          <a href="https://github.com/heitorsgrance2009-web" target="_blank">heitorsgrance2009-web</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- MODAL: janela que aparece quando o formulário está certo -->
+  <div id="modal" class="modal-fundo">
+    <div class="modal-caixa">
+      <button type="button" id="modal-x" class="modal-x">×</button>
+      <h2>Tudo certo!</h2>
+      <p>
+        Seus dados foram preenchidos corretamente. Clique em
+        "Enviar por e-mail" para abrir o seu e-mail com a mensagem pronta.
+      </p>
+      <a id="enviar-email" href="#" class="botao">Enviar por e-mail</a>
+      <button type="button" id="modal-fechar" class="botao botao-contorno">Fechar</button>
+    </div>
+  </div>
+
+  <footer>
+    <p class="rodape-titulo">Contato</p>
+    <div class="rodape-links">
+      <a href="mailto:heitorsgrance2009@gmail.com">heitorsgrance2009@gmail.com</a>
+      <a href="https://wa.me/5531996411013" target="_blank">WhatsApp: (31) 99641-1013</a>
+      <a href="https://github.com/heitorsgrance2009-web" target="_blank">GitHub: heitorsgrance2009-web</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,692 @@
+/* =====================================================
+   style.css - estilo de TODAS as páginas do portfólio
+   Tudo aqui é usado pelas 5 páginas (mesma identidade).
+
+   Organização:
+   1. Cores (modo escuro e modo claro)
+   2. Base da página
+   3. Barra de navegação
+   4. Página inicial
+   5. Botões e cartões
+   6. Habilidades, projetos e contato
+   7. Modal e rodapé
+   8. Animações
+   9. Responsivo (celular) com @media
+   ===================================================== */
+
+
+/* ---------- 1. CORES ---------- */
+/* Variáveis guardam as cores num lugar só.
+   Para usar uma cor: var(--nome). Mudou aqui, mudou no site todo. */
+
+/* Modo ESCURO (padrão) */
+:root {
+  --fundo: #1a1917;
+  --fundo2: #201f1c;
+  --cartao: #262521;
+  --texto: #ebe7df;
+  --texto-suave: #a39e93;
+  --destaque: #d4a574;
+  --borda: #39372f;
+  --texto-botao: #1a1917;
+  --erro: #e57373;
+}
+
+/* Modo CLARO: o JavaScript coloca a classe "claro" no <html> */
+html.claro {
+  --fundo: #f6f3ee;
+  --fundo2: #fbf9f5;
+  --cartao: #ffffff;
+  --texto: #1f1d1a;
+  --texto-suave: #6b665d;
+  --destaque: #9a5b2e;
+  --borda: #ddd6ca;
+  --texto-botao: #ffffff;
+  --erro: #c62828;
+}
+
+
+/* ---------- 2. BASE DA PÁGINA ---------- */
+/* Tira as margens padrão do navegador */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--fundo);
+  color: var(--texto);
+  line-height: 1.7;
+  /* Esse trio empurra o rodapé sempre para o final da tela */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.4s, color 0.4s;
+}
+
+main {
+  flex: 1; /* ocupa o espaço que sobra e empurra o rodapé para baixo */
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  animation: aparecer 0.8s;
+}
+
+h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  color: var(--destaque);
+  margin-bottom: 8px;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+/* Título e subtítulo de cada página */
+.topo-pagina {
+  margin-bottom: 40px;
+}
+
+.subtitulo {
+  color: var(--texto-suave);
+  font-size: 18px;
+}
+
+
+/* ---------- 3. BARRA DE NAVEGAÇÃO ---------- */
+header {
+  background-color: var(--fundo2);
+  border-bottom: 1px solid var(--destaque); /* a única linha da barra */
+  padding: 14px 40px;
+  display: flex;
+  align-items: center;
+  position: sticky; /* fica fixa no topo ao rolar */
+  top: 0;
+  z-index: 10;
+  transition: background-color 0.4s;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+  color: var(--destaque);
+  text-decoration: none;
+  margin-right: 45px;
+}
+
+nav ul {
+  list-style: none; /* tira as bolinhas da lista */
+  display: flex;
+  gap: 30px;
+}
+
+nav a {
+  color: var(--texto-suave);
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: var(--destaque);
+}
+
+/* Página atual: só muda a cor, sem sublinhado */
+nav a.ativo {
+  color: var(--destaque);
+}
+
+/* Botão de trocar o tema (fica no canto direito) */
+#botao-tema {
+  margin-left: auto;
+  background-color: transparent;
+  color: var(--texto);
+  border: 1px solid var(--destaque);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#botao-tema:hover {
+  background-color: var(--destaque);
+  color: var(--texto-botao);
+}
+
+
+/* ---------- 4. PÁGINA INICIAL ---------- */
+/* Texto na esquerda e foto na direita */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  padding: 20px 0 50px 0;
+}
+
+.hero-texto {
+  flex: 1;
+}
+
+.saudacao {
+  color: var(--destaque);
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+.hero h1 {
+  font-size: 68px;
+  line-height: 1.1;
+}
+
+.idade {
+  display: inline-block;
+  border: 1px solid var(--borda);
+  background-color: var(--cartao);
+  padding: 2px 16px;
+  border-radius: 20px;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+/* Frase de destaque embaixo do nome */
+.linha-destaque {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--destaque);
+  margin-bottom: 15px;
+}
+
+.hero-texto p {
+  color: var(--texto-suave);
+  max-width: 540px;
+}
+
+/* Foto redonda */
+.hero-foto {
+  flex-shrink: 0;
+}
+
+.foto {
+  display: block;
+  width: 310px;
+  height: 310px;
+  border-radius: 50%;           /* deixa a foto redonda */
+  object-fit: cover;            /* corta a foto sem esticar */
+  object-position: 50% 85%;     /* mostra o rosto dentro do círculo */
+  border: 3px solid var(--destaque);
+  animation: flutuar 4s infinite;
+}
+
+
+/* ---------- 5. BOTÕES E CARTÕES ---------- */
+.botao {
+  display: inline-block;
+  background-color: var(--destaque);
+  color: var(--texto-botao);
+  padding: 12px 28px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 10px 10px 0 0;
+  transition: 0.3s;
+}
+
+.botao:hover {
+  transform: translateY(-3px);
+  opacity: 0.88;
+}
+
+/* Botão só com contorno (visual mais leve) */
+.botao-contorno {
+  background-color: transparent;
+  color: var(--destaque);
+  border: 2px solid var(--destaque);
+  padding: 10px 26px;
+}
+
+.botao-contorno:hover {
+  background-color: var(--destaque);
+  color: var(--texto-botao);
+  opacity: 1;
+}
+
+.cartao {
+  background-color: var(--cartao);
+  border: 1px solid var(--borda);
+  border-radius: 16px;
+  padding: 26px;
+  
+  transition: 0.3s;
+}
+
+.cartao:hover {
+  border-color: var(--destaque);
+}
+
+.cartao p {
+  color: var(--texto-suave);
+  margin-bottom: 0;
+}
+
+/* Grade que se ajusta sozinha ao tamanho da tela */
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 22px;
+}
+
+.espaco {
+  height: 50px;
+}
+
+
+/* ---------- 6. HABILIDADES, PROJETOS E CONTATO ---------- */
+.lista-habilidades {
+  list-style: none;
+}
+
+.lista-habilidades li {
+  background-color: var(--cartao);
+  border: 1px solid var(--borda);
+  border-left: 5px solid var(--destaque);
+  padding: 16px 22px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  transition: 0.3s;
+}
+
+.lista-habilidades li:hover {
+  border-color: var(--destaque);
+}
+
+.nivel {
+  background-color: var(--destaque);
+  color: var(--texto-botao);
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* Etiquetas (usadas na página Sobre mim) */
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.tags li {
+  border: 1px solid var(--destaque);
+  color: var(--destaque);
+  padding: 5px 16px;
+  border-radius: 20px;
+  font-size: 15px;
+}
+
+/* Projetos */
+.caixa-projetos {
+  text-align: center;
+  padding: 50px 30px;
+}
+
+.caixa-projetos h2 {
+  color: var(--destaque);
+}
+
+.caixa-projetos p {
+  max-width: 560px;
+  margin: 0 auto 20px auto;
+}
+
+.projeto-tecnologias {
+  color: var(--destaque);
+  font-size: 14px;
+}
+
+/* Contato: formulário na esquerda, informações na direita */
+.contato-grade {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.campo {
+  margin-bottom: 14px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  background-color: var(--fundo);
+  color: var(--texto);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  transition: 0.3s;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--destaque);
+}
+
+/* O JavaScript coloca a classe "invalido" quando o campo tem erro */
+.invalido {
+  border-color: var(--erro);
+}
+
+.erro {
+  display: block;
+  color: var(--erro);
+  font-size: 13px;
+  min-height: 20px;
+}
+
+.contador {
+  text-align: right;
+  color: var(--texto-suave);
+  font-size: 13px;
+}
+
+.item-contato {
+  margin-bottom: 18px;
+}
+
+.item-contato a {
+  color: var(--destaque);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.item-contato a:hover {
+  text-decoration: underline;
+}
+
+
+/* ---------- 7. MODAL E RODAPÉ ---------- */
+/* Fundo escuro que cobre a tela toda (escondido no começo) */
+.modal-fundo {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* O JavaScript coloca a classe "aberto" para mostrar */
+.modal-fundo.aberto {
+  display: flex;
+  animation: aparecer 0.3s;
+}
+
+.modal-caixa {
+  position: relative;
+  background-color: var(--cartao);
+  border: 1px solid var(--destaque);
+  border-radius: 18px;
+  padding: 35px 30px;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  animation: aparecer 0.5s;
+}
+
+.modal-caixa p {
+  color: var(--texto-suave);
+}
+
+.modal-x {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  color: var(--texto);
+  font-size: 28px;
+  cursor: pointer;
+}
+
+footer {
+  background-color: var(--fundo2);
+  border-top: 1px solid var(--borda);
+  padding: 30px 20px;
+  text-align: center;
+  transition: background-color 0.4s;
+}
+
+.rodape-titulo {
+  font-weight: bold;
+  color: var(--destaque);
+  margin-bottom: 10px;
+}
+
+.rodape-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 30px;
+}
+
+.rodape-links a {
+  color: var(--texto-suave);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.rodape-links a:hover {
+  color: var(--destaque);
+}
+
+
+/* Botão de voltar ao topo (criado pelo JavaScript) */
+.botao-topo {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--destaque);
+  background-color: var(--fundo2);
+  color: var(--destaque);
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none; /* escondido não recebe clique */
+  transition: 0.3s;
+  z-index: 20;
+}
+
+.botao-topo.visivel {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.botao-topo:hover {
+  background-color: var(--destaque);
+  color: var(--texto-botao);
+}
+
+
+/* ---------- 8. ANIMAÇÕES ---------- */
+/* Elementos "revelar" começam invisíveis e aparecem ao rolar
+   (o JavaScript adiciona a classe "mostrar"). */
+.js .revelar {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s, transform 0.7s;
+}
+
+.js .revelar.mostrar {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Faz os cartões de uma mesma linha aparecerem um depois do outro */
+.grade .revelar:nth-child(2) {
+  transition-delay: 0.15s;
+}
+
+.grade .revelar:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flutuar {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+/* ---------- 9. RESPONSIVO (CELULAR E TABLET) ---------- */
+/* Tablet e celular grande */
+@media (max-width: 800px) {
+  header {
+    flex-wrap: wrap;
+    padding: 12px 20px;
+  }
+
+  .logo {
+    margin-right: 0;
+  }
+
+  /* O menu desce para uma linha própria, sem precisar de botão */
+  nav {
+    order: 3;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    gap: 6px 20px;
+  }
+
+  /* No celular a foto fica em cima e o texto embaixo */
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .hero-texto p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero h1 {
+    font-size: 52px;
+  }
+
+  .foto {
+    width: 230px;
+    height: 230px;
+  }
+
+  .contato-grade {
+    grid-template-columns: 1fr; /* uma coluna só */
+  }
+
+  .lista-habilidades li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Celular pequeno */
+@media (max-width: 480px) {
+  main {
+    padding: 35px 16px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .hero h1 {
+    font-size: 44px;
+  }
+
+  .linha-destaque {
+    font-size: 18px;
+  }
+
+  nav a {
+    font-size: 14px;
+  }
+
+  .botao {
+    width: 100%;
+    text-align: center;
+    margin-right: 0;
+  }
+}
